@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>更改电影信息</title>
+    <style>
+        div{width:100%; }
+        li{float:left;width:250px;list-style:none;}
+    </style>
+</head>
+<body>
+
+<form action="/update" method="get">
+    编号：<input type="text" name="id" th:value="${movie.id}" size="50%"><br/>
+    内容：<input type="text" name="content" th:value="${movie.content}" size="50%"><br/>
+    热度：<input type="text" name="hot" th:value="${movie.hot}" size="50%"><br/>
+    图片名：<input type="text" name="imageName" th:value="${movie.imageName}" size="50%"><br/>
+    影片名：<input type="text" name="name" th:value="${movie.name}" size="50%"><br/>
+    上映日期：<input type="text" name="publishDate" th:value="${movie.publishDate}" size="50%">
+    <input type="text" value="上映日期格式为：xxxx-xx-xx xx:xx:xx" size="50%">
+    <br/>
+    主题：<input type="text" name="title" th:value="${movie.title}" size="50%"><br/>
+    <input type="submit" value="提交"><br/>
+</form>
+
+</body>
+</html>

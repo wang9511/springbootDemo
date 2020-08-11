@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.film.mapper.MovieDetailMapperCustom">
+    <resultMap id="BaseDetailResultMap" type="com.example.film.model.MovieDetail">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="info" jdbcType="VARCHAR" property="info" />
+        <result column="movie_id" jdbcType="INTEGER" property="movieId" />
+        <result column="website_id" jdbcType="INTEGER" property="websiteId" />
+        <result column="url" jdbcType="VARCHAR" property="url" />
+        <result column="publish_date" jdbcType="TIMESTAMP" property="publishDate" />
+    </resultMap>
+
+
+    <select id="findById" resultType="java.lang.String">
+        select url from movie_detail
+        where movie_id = #{id}
+    </select>
+
+    <select id="findByName" resultType="java.lang.String">
+        select url
+        from movie_detail
+        left join movie
+        on movie.id = movie_detail.movie_id
+        where movie.name like concat ('%', #{name}, '%')
+    </select>
+
+</mapper>

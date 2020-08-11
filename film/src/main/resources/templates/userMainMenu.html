@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>管理员主页</title>
+    <style>
+        div{width:100%; }
+        li{float:left;width:250px;list-style:none;}
+    </style>
+</head>
+<body>
+<form action="/findMovieByName" method="get">
+    <input type="text" name="name" placeholder="请输入电影关键字">
+    <input type="submit" value="查找">
+</form>
+<br/>
+<a href="/insertMovie.html">添加电影</a>
+<br/>
+<a href="/addUser.html">添加用户</a>
+<br/>
+<a href="/home">电影首页</a>
+<br/>
+<table>
+    <tr sec:authorize="hasRole('admin')">
+        <td th:align="center">编号</td>
+        <td th:align="center">内容</td>
+        <td th:align="center">热度</td>
+        <td th:align="center">图片名称</td>
+        <td th:align="center">电影名</td>
+        <td th:align="center">上映日期</td>
+        <td th:align="center">电影名</td>
+        <td th:align="center">管理</td>
+    </tr>
+    <tr th:each="movie:${allMovie}">
+        <td th:text="${movie.id}" width="10%"></td>
+        <td th:utext="${movie.content}" width="40%"></td>
+        <td th:text="${movie.hot}" width="5%"></td>
+        <td th:text="${movie.imageName}" width="5%"></td>
+        <td th:text="${movie.name}" width="10%"></td>
+        <td th:text="${movie.publishDate}" width="10%"></td>
+        <td th:text="${movie.title}" width="10%"></td>
+        <td width="10%">
+            <a th:href="@{'/delete/'+${movie.id}}">删除</a><br/>
+            <a th:href="@{'/find/'+${movie.id}}">更改</a>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>电影网站首页</title>
+    <style>
+        div{width:100%; }
+        li{float:left;width:250px;list-style:none;}
+    </style>
+</head>
+<body>
+
+<!--th:if="${iterStat.index}%5 eq '0' " -->
+<!--|/resources/static/movie/${movie.id}| -->
+
+<table>
+    <tr align="center">
+        <td>
+            <img width="700" height="200" th:src="@{/movieImage/logo.jpg}"  alt="电影列表">
+        </td>
+        <td>
+            <form action="/search" method="get">
+                <input type="text" name="name" value placeholder="请输入关键词.." >
+                <input type="submit" value="搜索">
+            </form>
+        </td>
+    </tr>
+</table>
+<br/>
+
+<div width="80%">
+    <ul>
+        <h1>猜你喜欢</h1>
+    </ul>
+</div>
+<div>
+    <div th:each="movie, indexStat : ${allMovie}" class="container">
+        <ul >
+            <li>
+                <a th:href="'/movie/'+${movie.id}" target="_blank" th:title="${movie.name}">
+                    <img width="250" height="300" th:src="|/movieImage/${movie.imageName}|" th:alt="${movie.name}" border="2">
+                    <p th:text="${movie.name}" align="center"></p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<br/>
+
+<form action="/websiteList">
+        <input type="submit" value="推荐网站">
+</form>
+
+<!--
+<form action="/websiteList/id" method="get">
+    <input type="text" name="id" placeholder="请输入website id">
+    <input type="submit" value="查找">
+</form>
+-->
+
+</body>
+</html>

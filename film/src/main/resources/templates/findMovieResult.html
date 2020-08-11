@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>电影查询结果</title>
+</head>
+<body>
+<table>
+    <tr>
+        <td>编号</td>
+        <td>内容</td>
+        <td>热度</td>
+        <td>图片名称</td>
+        <td>电影名</td>
+        <td>上映日期</td>
+        <td>电影名</td>
+        <td>管理</td>
+    </tr>
+    <tr th:each="movie:${movieList}">
+        <td th:text="${movie.id}" width="3%"></td>
+        <td th:text="${movie.content}" width="50%"></td>
+        <td th:text="${movie.hot}" width="3%"></td>
+        <td th:text="${movie.imageName}" width="10%"></td>
+        <td th:text="${movie.name}" width="10%"></td>
+        <td th:text="${movie.publishDate}" width="10%"></td>
+        <td th:text="${movie.title}" width="9%"></td>
+        <td width="5%">
+            <a th:href="@{'/delete/'+${movie.id}}">删除</a><br/>
+            <a th:href="@{'/find/'+${movie.id}}">更改</a>
+        </td>
+    </tr>
+</table>
+<br/>
+<a th:href="@{'/userMenu'}">管理员主界面</a>
+</body>
+</html>

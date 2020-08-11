@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>电影详细信息</title>
+    <style>
+        div{width:100%}
+        li{float: left; width: 250px}
+    </style>
+</head>
+
+<div id="content" th:utext="${movieContent.content}"></div>
+
+<!--
+<table border="3" >
+    <tr>
+        <td>
+            <img height="300" width="250" th:src="|/movieImage/${movieContent.imageName}|">
+        </td>
+        <td th:text="${movieContent.content}"></td>
+    </tr>
+    <tr th:text="${movieContent.publishDate}"></tr>
+</table>
+-->
+
+
+<h2>播放线路如下：</h2>
+<div th:each="url, indexStat : ${urlList}" >
+    <ul >
+        <li>
+            <a th:href="${url}" target="_blank">
+                播放线路
+            </a>
+        </li>
+    </ul>
+</div>
+
+<br/>
+<h2>猜你喜欢：</h2>
+<br/>
+<div th:each="movie : ${randomList}">
+    <ul>
+        <li>
+            <a th:href="'/movie/'+${movie.id}" target="_blank" th:title="${movie.name}">
+                <img width="250" height="300" th:src="|/movieImage/${movie.imageName}|" th:alt="${movie.name}" border="2">
+                <p th:text="${movie.name}" align="center"></p>
+            </a>
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>添加电影</title>
+    <style>
+        div{width:100%; }
+        li{float:left;width:250px;list-style:none;}
+    </style>
+</head>
+<body>
+
+<form action="/insertMovie" method="get">
+    编号：<input type="text" name="id"  size="50%"><br/>
+    内容：<input type="text" name="content"  size="50%"><br/>
+    热度：<input type="text" name="hot"  size="50%"><br/>
+    图片名：<input type="text" name="imageName" size="50%"><br/>
+    影片名：<input type="text" name="name"  size="50%"><br/>
+    上映日期：<input type="text" name="publishDate"  size="50%">
+    <input type="text" value="上映日期格式为：xxxx-xx-xx xx:xx:xx" size="50%">
+    <br/>
+    主题：<input type="text" name="title"  size="50%"><br/>
+    <input type="submit" value="提交"><br/>
+</form>
+
+</body>
+</html>
